@@ -153,3 +153,8 @@ TEST_CASE("Adding one to december 31 will tick the year over")
 // Exercise 2.5
 // Write tests for the new default constructor and the
 // setDefaultDate method.
+TEST_CASE("Check to see that default date is correct") 
+{
+    Date date_1(1, Month::January, 1900);
+    CHECK(date_1 == Date::defaultdate());
+}

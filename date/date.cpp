@@ -4,7 +4,7 @@
 #include "date.h"
 
 
-Date::Date(const int day, Month month , const int year):
+Date::Date( int day, Month month , int year):
     _day{day},
     _month{month},
     _year{year}
@@ -26,6 +26,7 @@ Date::Date(const int day, Month month , const int year):
     
     
 }
+Date Date::_default(1, Month::January, 1900);
 
 void Date::incrementDay()
 {
@@ -69,6 +70,11 @@ Month Date::month() const
 int Date::year() const
 {
 	return _year;
+}
+
+Date Date::defaultdate ()
+{
+    return _default;
 }
 
 bool Date::isLeapYear() const

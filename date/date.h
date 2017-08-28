@@ -34,9 +34,24 @@ class Date
 {
 public:
     //constructor
-    Date(const int day,const Month month , const int year);		
+
+
+    Date(int day, Month month, int year);		
+    Date();
+    
+    
+    //Date _default{1, Month::January, 1900};
     
     void incrementDay();
+    
+    static Date defaultdate ();
+    
+    static void setDefaultDate(int day, Month month, int year)
+    {
+        Date::_default._day = day;
+        Date::_default._month = month;
+        Date::_default._year =  year;
+    }
 	// return the day of the month
 	int	day () const;
 	// return the month of the year
@@ -53,6 +68,7 @@ private:
 	// return the number of days in the _month
 	int	daysInMonth () const;		
 	
+    static Date _default;
 	int	_day;
 	Month _month;
 	int	_year;
