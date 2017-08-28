@@ -116,6 +116,40 @@ TEST_CASE("Dates with different days are not equal")
 // which will increase the date by one day.
 
 
+TEST_CASE("Date actually increases")
+ {
+    Date date_1(28, Month::August, 2017);
+    date_1.incrementDay();
+    CHECK(date_1.day() == 29);
+}
+
+TEST_CASE("Adding one to the date will change the month and set it to the first")
+ {
+    Date date_1(31, Month::July, 2017);
+    Date date_2(1, Month::August, 2017);
+    
+    date_1.incrementDay();
+    CHECK(date_1 == date_2);
+}
+TEST_CASE("Adding one to the date will change the month and set it to the first on a leap year")
+ {
+    Date date_1(29, Month::February, 2016);
+    Date date_2(1, Month::March, 2016);
+    
+    date_1.incrementDay();
+    CHECK(date_1== date_2);
+}
+TEST_CASE("Adding one to december 31 will tick the year over")
+ {
+    Date date_1(31, Month::December, 2016);
+    Date date_2(1, Month::January, 2017);
+    
+    date_1.incrementDay();
+    CHECK(date_1== date_2);
+}
+
+
+
 // Exercise 2.5
 // Write tests for the new default constructor and the
 // setDefaultDate method.

@@ -27,6 +27,33 @@ Date::Date(const int day, Month month , const int year):
     
 }
 
+void Date::incrementDay()
+{
+    
+    int staticMonth = static_cast<int>(_month);
+    
+    if(_day == daysInMonth())
+    {
+        if(staticMonth == 12)
+        {
+            staticMonth = 1;
+            _month = static_cast<Month>(staticMonth);
+            _day = 1;
+            _year ++;
+        }
+        else
+        {
+               staticMonth = staticMonth + 1;
+            _month = static_cast<Month>(staticMonth);
+            _day = 1; 
+        }
+    }
+    else
+    {
+        _day =_day +  1;    
+    }
+}
+
 
 int Date::day() const
 {

@@ -17,17 +17,17 @@ class invalidDay{};
 enum class Month 
 {
 	January = 1, 
-	February,
-	March, 
-	April,
-	May,
-	June,
-	July, 
-	August, 
-	September,
-	October,
-	November, 
-	December
+	February = 2,
+	March = 3, 
+	April = 4,
+	May =5,
+	June =6,
+	July =7, 
+	August =8, 
+	September =9,
+	October =10,
+	November =11, 
+	December =12
 };
 	
 class Date
@@ -35,6 +35,8 @@ class Date
 public:
     //constructor
     Date(const int day,const Month month , const int year);		
+    
+    void incrementDay();
 	// return the day of the month
 	int	day () const;
 	// return the month of the year
