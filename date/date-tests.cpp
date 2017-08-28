@@ -68,13 +68,44 @@ TEST_CASE("Check for valid day of month")
 }
 
 // Exercise 2.3
-//TEST_CASE("Identical Dates are Equal") {
-//    Date date_1(1, Month::January, 2000);
-//    Date date_2(1, Month::January, 2000);
-//
-//    CHECK(date_1 == date_2);
-//}
+TEST_CASE("Identical Dates are Equal")
+ {
+    Date date_1(1, Month::January, 2000);
+    Date date_2(1, Month::January, 2000);
 
+    CHECK(date_1 == date_2);
+}
+
+TEST_CASE("Leap year dates are equal")
+ {
+    Date date_1(29, Month::February, 2016);
+    Date date_2(29, Month::February, 2016);
+
+    CHECK(date_1 == date_2);
+}
+
+
+TEST_CASE("Dates with different years are not equal") 
+{
+    Date date_1(25, Month::February, 2016);
+    Date date_2(25, Month::February, 2015);
+    
+    CHECK_FALSE(date_1 == date_2);
+}
+TEST_CASE("Dates with different months are not equal") 
+{
+    Date date_1(25, Month::March, 2016);
+    Date date_2(25, Month::February, 2016);
+    
+    CHECK_FALSE(date_1 == date_2);
+}
+TEST_CASE("Dates with different days are not equal") 
+{
+    Date date_1(24, Month::February, 2016);
+    Date date_2(25, Month::February, 2016);
+    
+    CHECK_FALSE(date_1 == date_2);
+}
 // Supply at least three additional tests for
 // the equality operator here, to ensure that
 // it is working correctly.

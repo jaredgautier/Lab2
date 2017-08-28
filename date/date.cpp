@@ -85,8 +85,25 @@ int Date::daysInMonthPub() const
     return daysInMonth();
 }
 
+
+bool Date::operator==(const Date& rhs) const
+{
+    int rhsDay = rhs.day();
+    Month rhsMonth = rhs.month();
+    int rhsYear = rhs.year();
+    
+    if(rhsDay == _day && rhsMonth ==_month && rhsYear ==_year)
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+    return false;
     
 
+}
 
 
 // Note, this standalone function is not part of the Date class
