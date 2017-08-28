@@ -33,6 +33,39 @@ TEST_CASE("Valid Date is initialised correctly") {
 // to construct an invalid date. Think carefully about which
 // invalid dates to test.
 
+TEST_CASE("Number of days in mopnth is not greater than days in month") 
+{
+
+	CHECK_THROWS_AS(Date test_day(31, Month::September, 2000),monthWithTooManyDays);
+}
+
+TEST_CASE("Check that leap years are working") 
+{
+    Date test_day1{29, Month::February, 2000};
+    Date test_day2{29, Month::February, 2016};
+    CHECK(test_day1.isLeapYear());
+    CHECK(test_day2.isLeapYear());
+}
+
+TEST_CASE("Check that leap years have 29 days in February") 
+{
+    Date test_day{29, Month::February, 2016};
+    int numDays = test_day.daysInMonthPub();
+    CHECK(numDays == test_day.day());
+    
+}
+TEST_CASE("Check year is not greater than 2017") 
+{
+    CHECK_THROWS_AS(Date test_day(15, Month::September, 2020),invalidYear);
+}
+TEST_CASE("Check year is not less than 0") 
+{
+    CHECK_THROWS_AS(Date test_day(15, Month::September, -5),invalidYear);
+}
+TEST_CASE("Check for valid day of month") 
+{
+    CHECK_THROWS_AS(Date test_day(0, Month::September, 2016),invalidDay);
+}
 
 // Exercise 2.3
 //TEST_CASE("Identical Dates are Equal") {

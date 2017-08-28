@@ -9,7 +9,21 @@ Date::Date(const int day, Month month , const int year):
     _month{month},
     _year{year}
 {
-
+    
+    
+    int maxDays = daysInMonth();
+    
+    if(_day > maxDays) throw monthWithTooManyDays();
+        
+        
+    int maxYear = 2017;
+    int minYear = 0;
+    if (_year > maxYear || _year < minYear) throw invalidYear();
+    
+    int minDays = 1;
+    if (_day < minDays) throw invalidDay();
+    
+    
     
 }
 
@@ -21,6 +35,7 @@ int Date::day() const
 
 Month Date::month() const
 {
+    
     return _month;
 }
 
@@ -64,6 +79,15 @@ int Date::daysInMonth() const
             return -1;
 	}    
 }
+
+int Date::daysInMonthPub() const
+{
+    return daysInMonth();
+}
+
+    
+
+
 
 // Note, this standalone function is not part of the Date class
 void printDate(const Date& date)
