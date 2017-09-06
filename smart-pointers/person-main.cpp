@@ -16,6 +16,34 @@ using std::cout;
 
 #include "Person.h"
 
+//1
+// person_ptr is out of scope
+// person_ptr_in_main is out of scope
+
+
+
+//2
+// a 
+// b 
+// c 
+// d 
+// e 
+// f
+
+
+
+//3
+// a 2
+// b 2
+// c 2
+// d 2
+// e 1
+// f 1
+
+//4
+// Thabo in main because the last instance of it where as the last instance of sandile_ptr
+// is in the last line
+
 Person printName()
 {
 	Person thabo{"Thabo",12};
@@ -42,13 +70,13 @@ int main()
     auto sandile_ptr = make_unique<Person>("Sandile",15);    
 
     auto thabo_in_main = printName();
-    cout << thabo_in_main.name() << endl;
+    cout << thabo_in_main.name() << endl; //thabo released here
 
-    auto person_ptr_in_main = printName2();
-    printName3(person_ptr_in_main);
+    auto person_ptr_in_main = printName2(); 
+    printName3(person_ptr_in_main); //person pointer released here
 
     sandile_ptr = make_unique<Person>("Sandile2",11);  
-    cout << sandile_ptr->age() << endl;
+    cout << sandile_ptr->age() << endl;//sandile released here
 
     return 0;
 }
